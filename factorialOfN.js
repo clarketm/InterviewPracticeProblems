@@ -18,6 +18,9 @@ function factorial(n, memo = {}) {
  *
  * Factorial of N (tail-recursive)
  *
+ * - Termination statement must not be an expression
+ * - Termination statement should be the last call in the function
+ *
  * @param {number} n
  * @return {number}
  */
