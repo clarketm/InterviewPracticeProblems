@@ -10,7 +10,6 @@ function balancedDelimiters(exp) {
   let brackets = exp.split("");
   let matches = new Map([["(", ")"], ["{", "}"], ["[", "]"]]);
   let stack = [];
-  let balanced = true;
 
   for (let bracket of brackets) {
     switch (bracket) {
@@ -18,18 +17,16 @@ function balancedDelimiters(exp) {
       case "{":
       case "[":
         stack.push(matches.get(bracket));
-        balanced = false;
         break;
       case ")":
       case "}":
       case "]":
         if (stack.length === 0 || bracket !== stack.pop()) return false;
-        balanced = true;
         break;
     }
   }
 
-  return balanced && stack.length === 0;
+  return stack.length === 0;
 }
 
 // Test
