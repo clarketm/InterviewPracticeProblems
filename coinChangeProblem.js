@@ -70,7 +70,7 @@ function minimumCoins(n, S) {
     }
   }
 
-  return dp[n];
+  return dp[n] > n ? -1 : dp[n];
 }
 
 // Test
@@ -90,6 +90,8 @@ if (require.main === module) {
   console.log(coinChangeRecursive(100, [3, 2, 1])); // 884
   ////////////////////
   console.log(minimumCoins(11, [1, 2, 5])); // 3
+  console.log(minimumCoins(0, [1, 2, 5])); // 0
+  console.log(minimumCoins(3, [2])); // 0
 }
 
 module.exports = {
