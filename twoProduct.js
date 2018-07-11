@@ -1,28 +1,27 @@
 /**
  *
- * Two Sum
+ * Two Product
  *
  * @param {number} arr
  * @param {number} target
- * @return {number[]} - two numbers 
+ * @return {number[]} - two numbers
  */
 
-function fibonacciLite(n, memo = {}) {
-  if (n === 0) return 0;
-  if (n === 1) return 1;
-  if (memo[n]) return memo[n];
+function twoProduct(arr, target) {
+  let products = new Set();
 
-  memo[n] = fibonacciLite(n - 1, memo) + fibonacciLite(n - 2, memo);
-  return memo[n];
+  for (let n of arr) {
+    if (products.has(n)) return [n, target / n];
+    products.add(target / n);
+  }
 }
 
 // Test
 if (require.main === module) {
-  console.log(fibonacciLite(3)); // 2
-  console.log(fibonacciLite(12)); // 144
-  console.log(fibonacciLite(30)); // 832040
+  console.log(twoProduct([1, 5, 3, 8, 9, 2, 6], 12)); // [6, 2]
+  console.log(twoProduct([1, 5, 3, 8, 9, 2, 6], 24)); // [8, 3]
 }
 
 module.exports = {
-  fibonacciLite
+  twoProduct
 };
